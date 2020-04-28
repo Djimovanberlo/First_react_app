@@ -1,7 +1,25 @@
 import React from "react";
 import logo from "./logo.svg";
 import Title from "./components/Title";
+import Pokemon from "./components/Pokemon";
 import "./App.css";
+
+const all_pokemon = [
+  {
+    name: "Raticate",
+    weight: 18,
+    awesome: true,
+    terrifuing: false,
+    abilities: ["Quick Attack", "Super Fang", "Crunch", "Hyper Fang"],
+  },
+  {
+    name: "Zangooze",
+    weight: 40,
+    awesome: true,
+    terrifying: false,
+    abilities: ["Slash", "X-Scissor", "Swords Dance", "Brick Break"],
+  },
+];
 
 function App() {
   return (
@@ -9,7 +27,18 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <main>
-          <Title content="Some Simple Title" />
+          {all_pokemon.map((pokemon) => {
+            const { name, weight, awesome, terrifying, abilities } = pokemon;
+            return (
+              <Pokemon
+                name={name}
+                weight={weight}
+                awesome={awesome}
+                terrifying={terrifying}
+                abilities={abilities}
+              />
+            );
+          })}
         </main>
         <p>
           Edit <code>src/App.js</code> and save to reload.
